@@ -44,7 +44,7 @@ function Contacto() {
                 preenchendo o formulario abaixo.
             </p>
             <form
-                className="shadow-lg w-2/4 mt-10 flex flex-col gap-5 p-5"
+                className="shadow-lg mt-10 flex flex-col gap-5 p-5"
                 onSubmit={handleSendMessage}
             >
                 <input

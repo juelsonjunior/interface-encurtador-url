@@ -39,7 +39,7 @@ function EstatisticaURL() {
             <p className="w-2/4 text-center">
                 Verique a quantidade de acesso do seu link encurtado.
             </p>
-            <div className="shadow-lg w-5/12 flex flex-col justify-center p-5 rounded-lg mt-3">
+            <div className="shadow-lg flex flex-col justify-center p-5 rounded-lg mt-3">
                 <div className="flex items-center justify-between w-full h-10">
                     <input
                         type="text"

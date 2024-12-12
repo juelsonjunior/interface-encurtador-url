@@ -54,7 +54,7 @@ function Encurtador() {
                 compartilhar nas suas redes ou com seus amigos.Experimente o meu
                 encurtador de link grátis e simplifique sua presença online.
             </p>
-            <div className="shadow-lg w-5/12 flex flex-col justify-center p-5 rounded-lg mt-3">
+            <div className="shadow-lg flex flex-col justify-center p-5 rounded-lg mt-3">
                 <div className="flex items-center justify-between w-full h-10">
                     <input
                         type="text"

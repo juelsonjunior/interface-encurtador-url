@@ -14,19 +14,17 @@ function Encurtador() {
     const handleShortUrl = async () => {
         try {
             setIsloading(true);
+            
             const response = await api.post('/short-url', {
                 url: urlUser,
                 codPerson: codPersonUser,
             });
 
-            if (response.status == 201) {
-                setUrlShort(response.data.message);
-            } else if (response.status == 200) {
-                toast.warning(response.data.message);
-                setUrlShort(response.data.dataDuplicated);
-            } else {
-                toast.error(response.data.message);
+            if (response.status != 201) {
+                return toast.error(response.data.message);
             }
+
+            setUrlShort(response.data.message);
         } catch (error) {
             if (error.response) {
                 toast.error(error.response.data.message);
@@ -51,14 +49,16 @@ function Encurtador() {
             <h1 className="text-center text-3xl mt-5">Encurtador de URL</h1>
             <p className="w-2/4 text-center">
                 Transforme seus links longos em algo elegante e perfeito para
-                compartilhar nas suas redes ou com seus amigos.Experimente o meu
-                encurtador de link grátis e simplifique sua presença online.
+                compartilhar nas suas redes ou com seus amigos.
             </p>
-            <div className="shadow-lg flex flex-col justify-center p-5 rounded-lg mt-3">
+            <div className="shadow-lg flex flex-col justify-center p-5 rounded-lg mt-3 w-1/2">
                 <div className="flex items-center justify-between w-full h-10">
+                    <div className="bg-slate-800 text-green-600 h-full flex items-center rounded-s-md text-nowrap px-2 p-1 text-sm">
+                        http://
+                    </div>
                     <input
                         type="text"
-                        placeholder="Cole aqui a sua URL Exemplo: www.site.com"
+                        placeholder="Sua url aqui exemplo: www.site.com"
                         className="w-full outline-none px-1 h-6"
                         value={urlUser}
                         onChange={(e) => setUrlUser(e.target.value)}
@@ -80,12 +80,13 @@ function Encurtador() {
                 {!urlShort > 0 ? (
                     <div>
                         <div className="mt-5">
-                            <span>
-                                Deseja personalizar o código do seu link
-                            </span>
+                            <span>Personalizar sua url</span>
                             <p className="text-sm text-slate-400">
-                                Quando não informado, o código é gerado
-                                aleatoriamente
+                                Personaliza a url com um toque unico 
+                                exemplo:{' '}
+                                <strong>
+                                    encurtador-urls.vercel.app/codigo
+                                </strong>
                             </p>
                             <div className="flex gap-4 mt-3">
                                 <button
@@ -115,7 +116,7 @@ function Encurtador() {
                             </div>
                             <input
                                 type="text"
-                                placeholder="Seu codigo personalizado aqui"
+                                placeholder="Seu codigo aqui"
                                 className="w-full outline-none px-3 h-full text-slate-400"
                                 disabled={!codURLIsOn}
                                 value={codPersonUser}

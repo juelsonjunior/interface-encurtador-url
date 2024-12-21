@@ -1,13 +1,14 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import api from '../service/api';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 function EstatisticaURL() {
     const [urlShort, setUrlShort] = useState('');
     const [isLoading, setIsloading] = useState(false);
     const [acessCount, setAcessCount] = useState();
+    const [progressbar, setProgressbar] = useState(0);
 
     const searchUrlShort = async () => {
         try {
@@ -30,8 +31,15 @@ function EstatisticaURL() {
             }
         } finally {
             setIsloading(false);
+            setProgressbar(0);
         }
     };
+
+    useEffect(() => {
+        if (progressbar < 100 && isLoading) {
+            setTimeout(() => setProgressbar((prevState) => prevState + 1), 20);
+        }
+    }, [progressbar, isLoading]);
 
     return (
         <div className="w-full flex items-center  flex-col gap-3">
@@ -40,6 +48,14 @@ function EstatisticaURL() {
                 Verique a quantidade de acesso do seu link encurtado.
             </p>
             <div className="shadow-lg flex flex-col justify-center p-5 rounded-lg mt-3 w-1/2">
+                <div
+                    className={`bg-green-500 mb-2 rounded-full ${
+                        isLoading ? 'flex' : 'hidden'
+                    } h-2 justify-end px-3`}
+                    style={{
+                        width: `${progressbar}%`,
+                    }}
+                ></div>
                 <div className="flex items-center justify-between w-full h-10">
                     <input
                         type="text"
@@ -65,8 +81,8 @@ function EstatisticaURL() {
                 <div className="mt-5 mb-5">
                     <p className="text-lg">
                         Quantidade de acessos:
-                         <span className="text-green-600 font-bold">
-                             {acessCount ? ` ${acessCount}` : ' 0'}
+                        <span className="text-green-600 font-bold">
+                            {acessCount ? ` ${acessCount}` : ' --'}
                         </span>
                     </p>
                 </div>

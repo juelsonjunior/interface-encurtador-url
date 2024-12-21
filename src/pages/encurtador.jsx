@@ -54,7 +54,7 @@ function Encurtador() {
             <div className="shadow-lg flex flex-col justify-center p-5 rounded-lg mt-3 w-1/2">
                 <div className="flex items-center justify-between w-full h-10">
                     <div className="bg-slate-800 text-green-600 h-full flex items-center rounded-s-md text-nowrap px-2 p-1 text-sm">
-                        http://
+                        https://
                     </div>
                     <input
                         type="text"

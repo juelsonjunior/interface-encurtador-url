@@ -48,7 +48,7 @@ function Encurtador() {
         <div className="w-full flex items-center  flex-col gap-3">
             <h1 className="text-center text-3xl mt-5">Encurtador de URL</h1>
             <p className="w-2/4 text-center">
-                Transforme seus links longos em algo elegante e perfeito para
+                Transforme seus links longos em algo elegante e simples para
                 compartilhar nas suas redes ou com seus amigos.
             </p>
             <div className="shadow-lg flex flex-col justify-center p-5 rounded-lg mt-3 w-1/2">
